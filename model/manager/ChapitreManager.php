@@ -74,7 +74,7 @@ class ChapitreManager
 
                 $pdo = $this->connexion->openConnection();
 
-                $sql = "SELECT id, titre, contenu, image, dateAjout, dateModif FROM `chapitre` WHERE id = :id ORDER BY id ASC";
+                $sql = "SELECT id, titre, contenu, image, dateAjout FROM `chapitre` WHERE id = :id ORDER BY id ASC";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':id',$id,PDO::PARAM_INT);
