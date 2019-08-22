@@ -1,43 +1,76 @@
-﻿    <div>
-        <!-- Affiche chapitre -->
-	<?php
-    echo '<br>titre :  '.$chapitre->getTitre().'<br>';
-	echo 'Description :  '.$chapitre->getContenu().'<br>';
-    echo 'Image :  '.$chapitre->getImage().'<br>';
-	echo 'Date de création :  '.$chapitre->getDateAjout().'<br>';
-	?>
-    </div>
-<?php
-    //Affichage des commentaires et des signalements
-    if (null!==($chapitre->getListCommentaire())) {
-    ?>
-    <div>
-        <ul>
-            <li>
-                Pseudo | Date | Commentaire
-            </li>
+﻿    <!-- Chapitre -->
+    <section id="services">
+        <div id="ServicesConteneur">
+            <!-- Les services header -->
+            <div class="HeaderSection">
+                <h2><?=$chapitre->getTitre()?></h2>
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <hr>
+                <p><?=$chapitre->getContenu()?></p>
+                <p><?=$chapitre->getDateAjout()?></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Les commentaires -->
+    <section id="services">
+        <div id="ServicesConteneur">
+            <!-- Les services header -->
+            <div class="HeaderSection">
+                <h2>COMMENTAIRES</h2>
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <hr>
+            </div>
             <?php
-
-                foreach ($chapitre->getListCommentaire() as $commentaire) {
-                    echo '<li>' . $commentaire->getPseudo() . '
-			            | ' . $commentaire->getContenu() . ' | ' . $commentaire->getDateAjout() . '</li>';
-
-                    if ($commentaire->getSignalement()) {
-                        echo 'déjà signalé';
-                    } else
-                    {
-                      echo '<div><a href="index.php?pages=frontEnd&action=activerSignalement&chapitre='.$chapitre->getId().'&commentaire='.$commentaire->getId().'">Signaler</a></div>';
-                    };
-                }
+            //Affichage des commentaires et des signalements
+            if (null!==($chapitre->getListCommentaire())) {
             ?>
-        </ul>
-    </div>
-    <?php   } ?>
-    <div> <!-- Ajouter un commentaire -->
-        <?php echo'<form action="index.php?pages=frontEnd&chapitre='.$chapitre->getId().'&action=ajouterCommentaire" method="post">'; ?>
-            pseudo:<br>
-            <input type="text" name="pseudo" value=""><br>
-            Commentaire:<br>
-            <input type="text" name="contenu" value=""><br>
-            <input type="submit" value="Ajouter">
-        </form><a href="index.php">retour</a></div>
+            <!-- Commentaires -->
+            <?php
+            foreach ($chapitre->getListCommentaire() as $commentaire) { ?>
+                <div id="BodyServices">
+                <ul >
+                    <li class="DervicesDescription">
+                        <div class="TextServices">
+                            <p><?=$commentaire->getPseudo()?></p>
+                            <p><h3><?=$commentaire->getContenu()?></h3></p>
+                            <p><?=$commentaire->getDateAjout()?></p>
+
+        <?php if ($commentaire->getSignalement()) { ?>
+                            <p>Commentaire déjà signalé</p>
+        <?php } else
+              { ?>
+                  <p><a href="index.php?pages=frontEnd&action=activerSignalement&chapitre=<?=$chapitre->getId()?>&commentaire=<?=$commentaire->getId()?>">Signaler</a></p>
+        <?php } ?>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+                  <?php  }  ?>
+            <?php   } else {?>
+            <div id="BodyServices">
+                <ul >
+                    <li class="DervicesDescription">
+                        <div class="TextServices">
+                            aucun commentaire
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <?php } ?>
+        </div>
+    </section>
+
+
+    <!-- Envoyer un commentaire -->
+    <section id="contact">
+        <div id="ContactConteneur">
+           <form id="formulaire" action="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>&action=ajouterCommentaire#services" method="post">
+            <h2>Votre commentaire</h2>
+                <input type="text" name="pseudo" placeholder="Pseudo"/>
+                <textarea id="commentaire" name="contenu" placeholder="Message"></textarea>
+               <p><a href="#" class="bouton" onclick="document.getElementById('formulaire').submit();">envoyer</a></p>
+            </form>
+        </div>
+    </section>

@@ -13,7 +13,7 @@
     <script src="/assets/js/tinymce/tinymce.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         tinymce.init({
-            selector: 'textarea',
+            selector: 'textarea#backEnd',
             height: 500,
             menubar: false,
             plugins: [
@@ -34,7 +34,7 @@
 <header>
     <!-- Le logo -->
     <div id="LogoWebAgency">
-        <a href="#">
+        <a href="/">
             <img src="assets/images/logo.png" alt="Logo un billet simple pour l'Alaska">
         </a>
     </div>
@@ -43,7 +43,7 @@
         <ul>
             <input id="nav">
             <li><a class="" href="/">Accueil</a></li>
-            <li><a class="" href="#chapitres">Chapitres</a></li>
+            <li><a class="" href="/#chapitres">Chapitres</a></li>
             <li>
                 <?php
                 //Affiche un lien de déconnexion quand l'utilisateur est connécté

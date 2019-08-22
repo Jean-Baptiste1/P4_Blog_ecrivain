@@ -1,22 +1,17 @@
-<div>
-    <ul>
-        <li>
-            Authentification
-        </li>
-        <li>
-            <form action="index.php?pages=backEnd" method="post">
-                identifiant :<br>
-                <input type="text" name="identifiant" value=""><br>
-                mot de passe :<br>
-                <input type="text" name="motDePasse" value=""><br><br>
-                <input type="submit" value="Connexion">
-                <?php
-                if (isset($erreur)){
-                    echo $erreur;
-                }
+<!-- Envoyer un commentaire -->
+<section id="contact">
+    <div id="ContactConteneur">
+        <form action="index.php?pages=backEnd" method="post">
+            <h2>Authentification</h2>
+            <input type="text" name="identifiant" placeholder="identifiant"/>
+            <input type="text" name="motDePasse" placeholder="motDePasse"/>
+            <p><input type="submit" value="connexion"/></p>
+           <?php
+            if (isset($erreur)){
+                echo $erreur;
+            }
 
-                ?>
-            </form>
-        </li>
-    </ul>
-</div>
+            ?>
+        </form>
+    </div>
+</section>

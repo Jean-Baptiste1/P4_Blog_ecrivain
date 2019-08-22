@@ -14,14 +14,17 @@
             Titre | Contenu | Image | Date d'ajout | Date de modification
         </li>
         <?php
-        foreach($chapitres as $chapitre)
-        {
-            echo'<li><a href="index.php?pages=backEnd&page=lireChapitre&chapitre='.$chapitre->getId().'">'.$chapitre->getTitre().'
-			</a>| '.substr(strip_tags(htmlspecialchars_decode($chapitre->getContenu())), 0, 45).'... | '.$chapitre->getImage().' | '.$chapitre->getDateAjout().'
-			<a href="index.php?pages=backEnd&page=modifierChapitre&chapitre='.$chapitre->getId().'">modifier</a>
-			 | <a href="index.php?pages=backEnd&page=administration&action=supprimerChapitre&chapitre='.$chapitre->getId().'">supprimer</a></li>';
+        if (isset($chapitres)) {
+            foreach ($chapitres as $chapitre) {
+                echo '<li><a href="index.php?pages=backEnd&page=lireChapitre&chapitre=' . $chapitre->getId() . '">' . $chapitre->getTitre() . '
+			</a>| ' . substr(strip_tags(htmlspecialchars_decode($chapitre->getContenu())), 0, 45) . '... | ' . $chapitre->getImage() . ' | ' . $chapitre->getDateAjout() . '
+			<a href="index.php?pages=backEnd&page=modifierChapitre&chapitre=' . $chapitre->getId() . '">modifier</a>
+			 | <a href="index.php?pages=backEnd&page=administration&action=supprimerChapitre&chapitre=' . $chapitre->getId() . '">supprimer</a></li>';
 
-          }
+            }
+        }else{
+            echo'aucun chapitre';
+        }
         ?>
     </ul>
     <a href="index.php">Accueil</a>
