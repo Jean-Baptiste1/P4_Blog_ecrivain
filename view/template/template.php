@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>Un billet simple pour l'Alaska</title>
-    <link href="" rel="stylesheet" />
+    <meta name="description" content="Blog de Jean Forteroche où il écrit les chapitres de son livre." />
+    <!-- lien des ressource pour retrouver les icon de la page -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Appel de la feuille de style, de la police... -->
+    <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
+
     <script src="/assets/js/tinymce/tinymce.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         tinymce.init({
@@ -25,18 +31,54 @@
 </head>
 <body>
 <!-- Debut Header -->
-Un billet simple pour l'Alaska
+<header>
+    <!-- Le logo -->
+    <div id="LogoWebAgency">
+        <a href="#">
+            <img src="assets/images/logo.png" alt="Logo un billet simple pour l'Alaska">
+        </a>
+    </div>
+    <!-- Menu -->
+    <nav>
+        <ul>
+            <input id="nav">
+            <li><a class="" href="/">Accueil</a></li>
+            <li><a class="" href="#chapitres">Chapitres</a></li>
+            <li>
+                <?php
+                //Affiche un lien de déconnexion quand l'utilisateur est connécté
+                if(isset($_SESSION['token'])){
+                    echo '<a class="" href="index.php?pages=backEnd">Administration</a><a href="index.php?pages=backEnd&page=deconnexion">Déconnexion</a>';
+                } else {
+                    echo '<a class="" href="index.php?pages=backEnd">Administration</a>';
+                }
+                ?>
+            </li>
+        </ul>
+    </nav>
+</header>
 <!-- Fin Header -->
+<!-- Debut image -->
+<section id="slider">
+    <!-- La première slide -->
+    <div id="un" class="slide">
+        <div class="SlideHeader"></div>
+        <div class="SlideBody">
+            <div class="SlideText">
+                <h1><span>Un billet simple pour l'Alaska</span></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fin image -->
 <?php
-//Affiche un lien de déconnexion quand l'utilisateur est connécté
-if(isset($_SESSION['token'])){
-echo '<a href="index.php?pages=backEnd&page=deconnexion">Déconnexion</a>';
-}
 //Affiche le contenu du site
 echo $content
 ?>
 <!-- Debut Footer -->
+<footer id="footer">
+    <p>Site réalisé par Jean-Baptiste - DWJ OpenClassrooms 2019</p>
+</footer>
 <!-- Fin Footer-->
 </body>
 </html>
-
