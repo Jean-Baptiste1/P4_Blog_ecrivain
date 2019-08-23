@@ -33,7 +33,7 @@
 <!-- Debut Header -->
 <header>
     <!-- Le logo -->
-    <div id="LogoBlog">
+    <div id="logoBlog">
         <a href="/">
             <img src="assets/images/logo.png" alt="Logo un billet simple pour l'Alaska">
         </a>

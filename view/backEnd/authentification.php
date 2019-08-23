@@ -1,6 +1,6 @@
 <!-- Envoyer un commentaire -->
-<section id="contact">
-    <div id="ContactConteneur">
+<section id="authentification">
+    <div id="authentificationConteneur">
         <form action="index.php?pages=backEnd" method="post">
             <h2>Authentification</h2>
             <input type="text" name="identifiant" placeholder="identifiant"/>

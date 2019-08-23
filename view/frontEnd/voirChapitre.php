@@ -28,10 +28,10 @@
             <!-- Commentaires -->
             <?php
             foreach ($chapitre->getListCommentaire() as $commentaire) { ?>
-                <div id="BodyChapitre">
+                <div id="bodyChapitre">
                 <ul >
-                    <li class="DervicesDescription">
-                        <div class="TextCommentaire">
+                    <li class="devicesDescription">
+                        <div class="textCommentaire">
                             <p><?=$commentaire->getPseudo()?></p>
                             <p><h3><?=$commentaire->getContenu()?></h3></p>
                             <p><?=$commentaire->getDateAjout()?></p>
@@ -49,10 +49,10 @@
 
                   <?php  }  ?>
             <?php   } else {?>
-            <div id="BodyChapitre">
+            <div id="bodyChapitre">
                 <ul >
-                    <li class="DervicesDescription">
-                        <div class="TextCommentaire">
+                    <li class="devicesDescription">
+                        <div class="textCommentaire">
                             aucun commentaire
                         </div>
                     </li>
@@ -64,8 +64,8 @@
 
 
     <!-- Envoyer un commentaire -->
-    <section id="Avis">
-        <div id="AvisConteneur">
+    <section id="avis">
+        <div id="avisConteneur">
            <form id="formulaire" action="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>&action=ajouterCommentaire#services" method="post">
             <h2>Votre commentaire</h2>
                 <input type="text" name="pseudo" placeholder="Pseudo"/>

@@ -1,9 +1,9 @@
 ﻿<!-- Debut chapitres -->
     <section id="chapitres">
 
-        <div class="HeaderChapitres">
+        <div class="headerChapitres">
             <h2>CHAPITRES</h2>
-            <div class="RondBleu">
+            <div>
                 <i class="fa fa-circle" aria-hidden="true"></i>
             </div>
             <hr/>
@@ -11,7 +11,7 @@
         </div>
 
         <!-- La mise en place de l'album chapitres -->
-        <div class="AlbumChapitres">
+        <div class="albumChapitres">
     <?php
     if (isset($chapitres)){
     foreach($chapitres as $chapitre)

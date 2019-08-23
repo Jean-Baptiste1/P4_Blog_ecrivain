@@ -53,7 +53,7 @@ header ul {
 }
 
 header a {
-    padding: 0px 6px;
+    padding: 0 6px;
     text-decoration: none;
     color: #555555;
 }
@@ -129,7 +129,7 @@ a img {
 }
 
 /* Placement image + texte a l'horizontal */
-#BodyChapitre {
+#bodyChapitre {
     display: flex;
     margin: auto;
 }
@@ -141,12 +141,12 @@ a img {
 }
 
 /* Centrer l'image + texte */
-.TextCommentaire {
+.textCommentaire {
     max-width: 700px;
 }
 
 /* Espace entre les texte */
-.DervicesDescription {
+.devicesDescription {
     display: flex;
     text-align: center;
 }
@@ -180,7 +180,7 @@ hr {
 /* SECTION CHAPITRES  */
 /*------------------*/
 
-.HeaderChapitres i.fa {
+.headerChapitres i.fa {
     color: #64B4C8;
     position: relative;
     top: 24px;
@@ -188,7 +188,7 @@ hr {
 }
 
 /* En-tête des sections */
-.HeaderChapitres {
+.headerChapitres {
     text-align: center;
     width: 90%;
     margin: 0 auto;
@@ -203,7 +203,7 @@ hr {
 /* Mise en place de l'album */
 
 /* Mise en forme des projets */
-.AlbumChapitres {
+.albumChapitres {
     display: flex;
     width: 80%;
     margin: auto;
@@ -252,12 +252,12 @@ figcaption a:hover {
 /* SECTION AVIS */
 /*-----------------*/
 
-#Avis {
+#avis, #authentification {
     position: relative;
     height: 350px;
 }
 
-#AvisConteneur {
+#avisConteneur, #authentificationConteneur {
     display: flex;
     justify-content: center;
 }
@@ -357,7 +357,7 @@ header nav a:hover, header nav .active {
         height: 300px;
         border-bottom: 3px solid #b1b1b1;
     }
-    #LogoBlog img {
+    #logoBlog img {
         height: 145px;
     }
 
@@ -366,7 +366,7 @@ header nav a:hover, header nav .active {
         padding: 10px 10px 0 0;
     }
 
-    #BodyChapitre {
+    #bodyChapitre {
         flex-wrap: wrap; /* Présentation des services en colonnes */
     }
 
@@ -394,7 +394,7 @@ header nav a:hover, header nav .active {
         width: 40%;
     }
 
-    .AlbumProjets i {
+    .albumProjets i {
         width: 80px;
         height: 80px;
         line-height: 80px;
@@ -402,7 +402,7 @@ header nav a:hover, header nav .active {
         top: -40px;
     }
 
-    .AlbumProjets {
+    .albumProjets {
         font-size: 23px;
     }
 
@@ -424,35 +424,35 @@ header nav a:hover, header nav .active {
         top: 55px;
     }
 
-    .HeaderProjets {
+    .headerProjets {
         font-size:40px;
     }
 
-    .HeaderProjets i.fa {
+    .headerProjets i.fa {
         top: 55px;
     }
 
-    #chapitreConteneur, commentaireConteneur {
+    #chapitreConteneur, #commentaireConteneur {
         font-size: 40px;
     }
 
-    .DervicesDescription {
+    .devicesDescription {
         flex-direction: column;
     }
 
-    .TextCommentaire {
+    .textCommentaire {
         width:95%;
         max-width: 95%;
         margin-left: 0;
     }
 
-    #BodyChapitre ul {
+    #bodyChapitre ul {
         width:100%;
         text-align: center;
         font-size: 40px;
     }
 
-    #Avis {
+    #avis {
         font-size: 40px;
         height:1300px;
     }
@@ -480,7 +480,7 @@ header nav a:hover, header nav .active {
         font-size: 55px;
     }
 
-    #AvisConteneur {
+    #avisConteneur {
         height:1300px;
     }
 
