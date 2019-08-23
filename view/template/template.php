@@ -33,7 +33,7 @@
 <!-- Debut Header -->
 <header>
     <!-- Le logo -->
-    <div id="LogoWebAgency">
+    <div id="LogoBlog">
         <a href="/">
             <img src="assets/images/logo.png" alt="Logo un billet simple pour l'Alaska">
         </a>
@@ -42,15 +42,15 @@
     <nav>
         <ul>
             <input id="nav">
-            <li><a class="" href="/">Accueil</a></li>
-            <li><a class="" href="/#chapitres">Chapitres</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/#chapitres">Chapitres</a></li>
             <li>
                 <?php
                 //Affiche un lien de déconnexion quand l'utilisateur est connécté
                 if(isset($_SESSION['token'])){
-                    echo '<a class="" href="index.php?pages=backEnd">Administration</a><a href="index.php?pages=backEnd&page=deconnexion">Déconnexion</a>';
+                    echo '<a href="index.php?pages=backEnd">Administration</a><a href="index.php?pages=backEnd&page=deconnexion">Déconnexion</a>';
                 } else {
-                    echo '<a class="" href="index.php?pages=backEnd">Administration</a>';
+                    echo '<a href="index.php?pages=backEnd">Administration</a>';
                 }
                 ?>
             </li>
@@ -59,12 +59,12 @@
 </header>
 <!-- Fin Header -->
 <!-- Debut image -->
-<section id="slider">
+<section id="limage">
     <!-- La première slide -->
-    <div id="un" class="slide">
-        <div class="SlideHeader"></div>
-        <div class="SlideBody">
-            <div class="SlideText">
+    <div class="image">
+        <div class="imageHeader"></div>
+        <div class="imageBody">
+            <div class="textImage">
                 <h1><span>Un billet simple pour l'Alaska</span></h1>
             </div>
         </div>

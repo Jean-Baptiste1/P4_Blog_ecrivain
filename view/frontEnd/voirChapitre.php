@@ -1,8 +1,8 @@
 ﻿    <!-- Chapitre -->
-    <section id="services">
-        <div id="ServicesConteneur">
+    <section id="chapitre">
+        <div id="chapitreConteneur">
             <!-- Les services header -->
-            <div class="HeaderSection">
+            <div class="textSection">
                 <h2><?=$chapitre->getTitre()?></h2>
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <hr>
@@ -13,10 +13,10 @@
     </section>
 
     <!-- Les commentaires -->
-    <section id="services">
-        <div id="ServicesConteneur">
+    <section id="commentaires">
+        <div id="commentaireConteneur">
             <!-- Les services header -->
-            <div class="HeaderSection">
+            <div class="textSection">
                 <h2>COMMENTAIRES</h2>
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <hr>
@@ -28,10 +28,10 @@
             <!-- Commentaires -->
             <?php
             foreach ($chapitre->getListCommentaire() as $commentaire) { ?>
-                <div id="BodyServices">
+                <div id="BodyChapitre">
                 <ul >
                     <li class="DervicesDescription">
-                        <div class="TextServices">
+                        <div class="TextCommentaire">
                             <p><?=$commentaire->getPseudo()?></p>
                             <p><h3><?=$commentaire->getContenu()?></h3></p>
                             <p><?=$commentaire->getDateAjout()?></p>
@@ -49,10 +49,10 @@
 
                   <?php  }  ?>
             <?php   } else {?>
-            <div id="BodyServices">
+            <div id="BodyChapitre">
                 <ul >
                     <li class="DervicesDescription">
-                        <div class="TextServices">
+                        <div class="TextCommentaire">
                             aucun commentaire
                         </div>
                     </li>
@@ -64,8 +64,8 @@
 
 
     <!-- Envoyer un commentaire -->
-    <section id="contact">
-        <div id="ContactConteneur">
+    <section id="Avis">
+        <div id="AvisConteneur">
            <form id="formulaire" action="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>&action=ajouterCommentaire#services" method="post">
             <h2>Votre commentaire</h2>
                 <input type="text" name="pseudo" placeholder="Pseudo"/>
