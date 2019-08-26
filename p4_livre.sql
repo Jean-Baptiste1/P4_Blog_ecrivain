@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 22 août 2019 à 19:45
+-- Généré le :  lun. 26 août 2019 à 16:56
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `chapitre` (
   `image` char(64) NOT NULL,
   `dateAjout` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `chapitre`
@@ -50,8 +50,7 @@ INSERT INTO `chapitre` (`id`, `titre`, `contenu`, `image`, `dateAjout`) VALUES
 (24, 'Chapitre 8', '&lt;p&gt;On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et emp&amp;ecirc;che de se concentrer sur la mise en page elle-m&amp;ecirc;me. L\'avantage du Lorem Ipsum sur un texte g&amp;eacute;n&amp;eacute;rique comme \'Du texte. Du texte. Du texte.\' est qu\'il poss&amp;egrave;de une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du fran&amp;ccedil;ais standard. De nombreuses suites logicielles de mise en page ou &amp;eacute;diteurs de sites Web ont fait du Lorem Ipsum leur faux texte par d&amp;eacute;faut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'&amp;agrave; leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).&lt;/p&gt;', 'chapitre8', '2019-08-22 11:50:44'),
 (19, 'Chapitre 5', '&lt;p&gt;On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et emp&amp;ecirc;che de se concentrer sur la mise en page elle-m&amp;ecirc;me. L\'avantage du Lorem Ipsum sur un texte g&amp;eacute;n&amp;eacute;rique comme \'Du texte. Du texte. Du texte.\' est qu\'il poss&amp;egrave;de une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du fran&amp;ccedil;ais standard. De nombreuses suites logicielles de mise en page ou &amp;eacute;diteurs de sites Web ont fait du Lorem Ipsum leur faux texte par d&amp;eacute;faut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'&amp;agrave; leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).&lt;/p&gt;', 'chapitre5', '2019-08-22 11:50:08'),
 (21, 'Chapitre 6', '&lt;p&gt;On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et emp&amp;ecirc;che de se concentrer sur la mise en page elle-m&amp;ecirc;me. L\'avantage du Lorem Ipsum sur un texte g&amp;eacute;n&amp;eacute;rique comme \'Du texte. Du texte. Du texte.\' est qu\'il poss&amp;egrave;de une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du fran&amp;ccedil;ais standard. De nombreuses suites logicielles de mise en page ou &amp;eacute;diteurs de sites Web ont fait du Lorem Ipsum leur faux texte par d&amp;eacute;faut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'&amp;agrave; leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).&lt;/p&gt;', 'chapitre6', '2019-08-22 11:50:20'),
-(16, 'Chapitre 4', '&lt;p&gt;On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et emp&amp;ecirc;che de se concentrer sur la mise en page elle-m&amp;ecirc;me. L\'avantage du Lorem Ipsum sur un texte g&amp;eacute;n&amp;eacute;rique comme \'Du texte. Du texte. Du texte.\' est qu\'il poss&amp;egrave;de une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du fran&amp;ccedil;ais standard. De nombreuses suites logicielles de mise en page ou &amp;eacute;diteurs de sites Web ont fait du Lorem Ipsum leur faux texte par d&amp;eacute;faut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'&amp;agrave; leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).&lt;/p&gt;', 'chapitre4', '2019-08-22 11:50:03'),
-(25, 'Chapitre 9', '&lt;p&gt;On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et emp&amp;ecirc;che de se concentrer sur la mise en page elle-m&amp;ecirc;me. L\'avantage du Lorem Ipsum sur un texte g&amp;eacute;n&amp;eacute;rique comme \'Du texte. Du texte. Du texte.\' est qu\'il poss&amp;egrave;de une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du fran&amp;ccedil;ais standard. De nombreuses suites logicielles de mise en page ou &amp;eacute;diteurs de sites Web ont fait du Lorem Ipsum leur faux texte par d&amp;eacute;faut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'&amp;agrave; leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).&lt;/p&gt;', 'chapitre9', '2019-08-22 11:51:01');
+(16, 'Chapitre 4', '&lt;p&gt;On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et emp&amp;ecirc;che de se concentrer sur la mise en page elle-m&amp;ecirc;me. L\'avantage du Lorem Ipsum sur un texte g&amp;eacute;n&amp;eacute;rique comme \'Du texte. Du texte. Du texte.\' est qu\'il poss&amp;egrave;de une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du fran&amp;ccedil;ais standard. De nombreuses suites logicielles de mise en page ou &amp;eacute;diteurs de sites Web ont fait du Lorem Ipsum leur faux texte par d&amp;eacute;faut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'&amp;agrave; leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).&lt;/p&gt;', 'chapitre4', '2019-08-22 11:50:03');
 
 -- --------------------------------------------------------
 
@@ -68,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `signalement` tinyint(1) NOT NULL DEFAULT '0',
   `id_chapitre` int(10) NOT NULL,
   PRIMARY KEY (`id`,`id_chapitre`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commentaire`
@@ -77,22 +76,12 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 INSERT INTO `commentaire` (`id`, `pseudo`, `contenu`, `dateAjout`, `signalement`, `id_chapitre`) VALUES
 (10, 'jean-baptiste', 'tout ça', '2019-08-19 12:43:08', 1, 7),
 (9, 'jean-baptiste', 'tout ça', '2019-08-19 12:43:04', 1, 7),
-(50, 'jean-baptiste', 'rrrrrrrrrrrrrrrrrrrrrr\r\nr\r\n\r\nr\r\nr\r\nr\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\nr', '2019-08-22 17:17:41', 0, 1),
-(49, 'jean-baptiste', 'super !', '2019-08-22 17:14:32', 0, 1),
 (18, 'jean-baptiste', 'tout ça', '2019-08-19 17:15:01', 1, 6),
-(51, 'jean-baptiste', 'rrrrrrrrrrrrrrrrrrrrrr\r\nr\r\n\r\nr\r\nr\r\nr\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\nr', '2019-08-22 17:19:50', 0, 1),
 (24, '0', 'tout ça', '2019-08-19 22:00:00', 1, 20),
 (25, 'jean-baptiste', 'alert(\'C\\\'est une faille XSS qu\\\'on a là\')', '2019-08-19 22:00:00', 0, 20),
-(48, 'jean-baptiste', 'super !', '2019-08-22 17:14:25', 0, 1),
-(47, 'jean-baptiste', 'Super chapitre !', '2019-08-22 17:01:55', 1, 1),
-(44, 'jean-baptiste', 'Super chapitre !', '2019-08-22 16:56:35', 1, 1),
-(45, 'jean-baptiste', 'super !', '2019-08-22 16:56:57', 1, 1),
-(52, 'jean-baptiste', 'rrrrrrrrrrrrrrrrrrrrrr\r\nr\r\n\r\nr\r\nr\r\nr\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\nr', '2019-08-22 17:21:20', 0, 1),
-(53, 'jean-baptiste', 'rrrrrrrrrrrrrrrrrrrrrr\r\nr\r\n\r\nr\r\nr\r\nr\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\nr', '2019-08-22 17:22:18', 0, 1),
-(54, 'jean-baptiste', 'rrrrrrrrrrrrrrrrrrrrrr\r\nr\r\n\r\nr\r\nr\r\nr\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\n\r\nr\r\nr\r\nr', '2019-08-22 17:22:20', 0, 1),
-(55, 'jean-baptiste', 'ytrughffgh', '2019-08-22 17:56:35', 0, 1),
-(56, 'jean-baptiste', 'ytrughffgh', '2019-08-22 17:57:05', 0, 1),
-(57, 'jean-baptiste', 'ytrughffgh', '2019-08-22 18:03:27', 0, 1);
+(59, 'jean-baptiste', 'super chapitre !', '2019-08-26 13:26:14', 0, 1),
+(60, 'jean-baptiste', 'super', '2019-08-26 13:26:21', 0, 1),
+(58, 'jean-baptiste', 'super chapitre !', '2019-08-26 13:23:38', 0, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
