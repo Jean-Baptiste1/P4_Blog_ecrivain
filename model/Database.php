@@ -7,6 +7,7 @@ class Database
 
     private $user = "root";
 
+
     private $pass = "";
 
     private $options = array(
