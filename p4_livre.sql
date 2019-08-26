@@ -74,11 +74,6 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 --
 
 INSERT INTO `commentaire` (`id`, `pseudo`, `contenu`, `dateAjout`, `signalement`, `id_chapitre`) VALUES
-(10, 'jean-baptiste', 'tout ça', '2019-08-19 12:43:08', 1, 7),
-(9, 'jean-baptiste', 'tout ça', '2019-08-19 12:43:04', 1, 7),
-(18, 'jean-baptiste', 'tout ça', '2019-08-19 17:15:01', 1, 6),
-(24, '0', 'tout ça', '2019-08-19 22:00:00', 1, 20),
-(25, 'jean-baptiste', 'alert(\'C\\\'est une faille XSS qu\\\'on a là\')', '2019-08-19 22:00:00', 0, 20),
 (59, 'jean-baptiste', 'super chapitre !', '2019-08-26 13:26:14', 0, 1),
 (60, 'jean-baptiste', 'super', '2019-08-26 13:26:21', 0, 1),
 (58, 'jean-baptiste', 'super chapitre !', '2019-08-26 13:23:38', 0, 1);
