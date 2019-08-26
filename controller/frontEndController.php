@@ -18,12 +18,12 @@ class frontEndController
 
         public function ajouterCommentaire($chapitre)
         {
-            $commentaire = new Commentaire();
-            $commentaire->setPseudo($this->securisation($_POST['pseudo']));
-            $commentaire->setContenu($this->securisation($_POST['contenu']));
+                $commentaire = new Commentaire();
+                $commentaire->setPseudo($this->securisation($_POST['pseudo']));
+                $commentaire->setContenu($this->securisation($_POST['contenu']));
 
-            $commentaireManager = new CommentaireManager();
-            $commentaireManager->create($commentaire, $this->securisation($chapitre));
+                $commentaireManager = new CommentaireManager();
+                $commentaireManager->create($commentaire, $this->securisation($chapitre));
         }
 
         public function lireChapitre($idChapitre)

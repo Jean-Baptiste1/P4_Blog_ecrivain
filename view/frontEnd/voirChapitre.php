@@ -66,11 +66,11 @@
     <!-- Envoyer un commentaire -->
     <section id="avis">
         <div id="avisConteneur">
-           <form id="formulaire" action="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>&action=ajouterCommentaire#services" method="post">
+           <form id="formulaire" name="formAvis" action="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>&action=ajouterCommentaire#services" method="post">
             <h2>Votre commentaire</h2>
-                <input type="text" name="pseudo" placeholder="Pseudo"/>
-                <textarea id="commentaire" name="contenu" placeholder="Message"></textarea>
-               <p><a href="#" class="bouton" onclick="document.getElementById('formulaire').submit();">envoyer</a></p>
+               <input type="text" name="pseudo" placeholder="Pseudo" autofocus required>
+               <textarea id="commentaire" name="contenu"></textarea>
+               <button class="bouton" type="submit">envoyer</button>
             </form>
         </div>
     </section>

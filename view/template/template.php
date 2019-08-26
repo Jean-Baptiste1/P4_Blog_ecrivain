@@ -28,6 +28,15 @@
             ]
         });
         </script>
+    <script language='javascript'>
+        function Supprimer()
+        {
+            if (confirm("Etes vous sûr ?"))
+            {
+                return true;
+            }
+        }
+    </script>
 </head>
 <body>
 <!-- Debut Header -->

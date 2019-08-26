@@ -31,7 +31,7 @@ ul {
 }
 
 /*----------*/
-/*  HEADER  */
+/*  Header  */
 /*----------*/
 
 /* Titre et le menu reste visible */
@@ -69,7 +69,7 @@ a img {
 }
 
 /*-----------------*/
-/*  SECTION IMAGE  */
+/*  Section image  */
 /*-----------------*/
 
 /* Image centrer */
@@ -118,7 +118,7 @@ a img {
 }
 
 /*---------------------*/
-/* SECTION COMMENTAIRE */
+/* Section commentaire */
 /*---------------------*/
 
 .textSection i.fa {
@@ -176,9 +176,9 @@ hr {
     padding-top: 0;
 }
 
-/*------------------*/
-/* SECTION CHAPITRES  */
-/*------------------*/
+/*-------------------*/
+/* Section chapitres */
+/*-------------------*/
 
 .headerChapitres i.fa {
     color: #64B4C8;
@@ -248,9 +248,20 @@ figcaption a:hover {
     text-decoration-line: underline;
 }
 
-/*-----------------*/
-/* SECTION AVIS */
-/*-----------------*/
+/*---------------------------*/
+/* Section modifier chapitre */
+/*---------------------------*/
+
+#modifierChapitre {
+    position: relative;
+}
+#modifierChapitre form {
+    width: auto;
+}
+
+/*--------------*/
+/* Section avis */
+/*--------------*/
 
 #avis, #authentification {
     position: relative;
@@ -366,6 +377,10 @@ header nav a:hover, header nav .active {
         padding: 10px 10px 0 0;
     }
 
+    #modifierChapitre form {
+        font-size: 35px;
+    }
+
     #bodyChapitre {
         flex-wrap: wrap; /* Présentation des services en colonnes */
     }
@@ -387,11 +402,12 @@ header nav a:hover, header nav .active {
 
     .textImage {
         max-width: 450px;
+        font-size: 30px;
     }
 
     figure {
-        height: 90%;
-        width: 40%;
+        height: 100%;
+        width: 100%;
     }
 
     .albumProjets i {
@@ -416,7 +432,7 @@ header nav a:hover, header nav .active {
         font-size: 40px;
     }
 
-    #projets li:hover::before, #projets .select::before {
+    #projets li:hover::before, #projets .select::before, #retour {
         display:none;
     }
 
@@ -432,8 +448,12 @@ header nav a:hover, header nav .active {
         top: 55px;
     }
 
-    #chapitreConteneur, #commentaireConteneur {
+    #chapitreConteneur, #commentaireConteneur, #chapitre, #chapitres {
         font-size: 40px;
+    }
+
+    .headerChapitres i.fa {
+        top: 54px;
     }
 
     .devicesDescription {
@@ -452,7 +472,7 @@ header nav a:hover, header nav .active {
         font-size: 40px;
     }
 
-    #avis {
+    #avis, #authentification {
         font-size: 40px;
         height:1300px;
     }
@@ -480,14 +500,14 @@ header nav a:hover, header nav .active {
         font-size: 55px;
     }
 
-    #avisConteneur {
-        height:1300px;
-    }
-
     form {
         width: 80%;
         height:max-content;
         margin: 100px auto auto;
+    }
+
+    #formulaireChapitre img {
+        width: 100%;
     }
 
     #footer {

@@ -61,7 +61,7 @@ class backEndController {
 
     public function afficherAjouterChapitre()
     {
-        include 'view/backEnd/ajoutChapitre.php';
+            include 'view/backEnd/ajoutChapitre.php';
     }
 
     public function afficherListeCommentaires()
@@ -74,29 +74,55 @@ class backEndController {
 
     public function ajouterChapitre()
     {
-        $chapitre = new Chapitre();
-        $chapitre->setTitre(htmlspecialchars($_POST['titre']));
-        $chapitre->setContenu(htmlspecialchars($_POST['contenu']));
-        $chapitre->setImage(htmlspecialchars($_POST['image']));
+        $uploaddir = "F:\wamp64\www\assets\images\\";
+        $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+        if (!file_exists($uploadfile)) {
 
-        $chapitreManager = new ChapitreManager();
-        $chapitreManager->create($chapitre);
+            $chapitre = new Chapitre();
+            $chapitre->setTitre(htmlspecialchars($_POST['titre']));
+            $chapitre->setContenu(htmlspecialchars($_POST['contenu']));
+
+
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
+
+            $chapitre->setImage(substr($_FILES['image']['name'],0,-4));
+
+            $chapitreManager = new ChapitreManager();
+            $chapitreManager->create($chapitre);
+        }
+
     }
 
     public function modifierChapitre($id)
     {
-        $chapitre = new Chapitre();
-        $chapitre->setId((int)$id);
-        $chapitre->setTitre(htmlspecialchars($_POST['titre']));
-        $chapitre->setContenu(htmlspecialchars($_POST['contenu']));
-        $chapitre->setImage(htmlspecialchars($_POST['image']));
 
-        $chapitreManager = new ChapitreManager();
-        $chapitreManager->update($chapitre);
+        $uploaddir = "F:\wamp64\www\assets\images\\";
+        $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+        if (!file_exists($uploadfile)) {
+
+            $chapitre = new Chapitre();
+            $chapitre->setId((int)$id);
+            $chapitre->setTitre(htmlspecialchars($_POST['titre']));
+            $chapitre->setContenu(htmlspecialchars($_POST['contenu']));
+
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
+
+            $chapitre->setImage(substr($_FILES['image']['name'],0,-4));
+
+            $chapitreManager = new ChapitreManager();
+            $chapitreManager->update($chapitre);
+        }
     }
 
     public function supprimerChapitre($id)
     {
+        $chapitreManager = new ChapitreManager();
+        $chapitre=$chapitreManager->read((int)$id);
+        $image=$chapitre->getImage();
+        $myFile = 'F:\wamp64\www\assets\images\\'.$image.'.jpg';
+        if (file_exists($myFile)) {
+            unlink($myFile);
+        }
         $chapitreManager = new ChapitreManager();
         $chapitreManager->delete((int)$id);
     }
