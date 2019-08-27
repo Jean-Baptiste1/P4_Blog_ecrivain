@@ -18,6 +18,8 @@ spl_autoload_register(/**
         include $file;
     } elseif (file_exists($file = 'model/manager/' . $class . '.php')) {
         include $file;
+    } elseif (file_exists($file = 'conf/' . $class . '.php')) {
+        include $file;
     }
 });
 
