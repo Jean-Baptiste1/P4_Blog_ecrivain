@@ -1,8 +1,18 @@
 ﻿<?php
 
+/**
+ * Class backEndController
+ */
 class backEndController {
 
+    /**
+     * @var string
+     */
+    private $uploaddir = "/var/www/vhosts/lecalvez.cloud/projetsoc.lecalvez.cloud/projet4/assets/images/chapitre/";
 
+    /**
+     * @throws Exception
+     */
     public function authentification(){
 
         if(!empty($_POST['identifiant']) || !empty($_POST['motDePasse'])) {
@@ -31,6 +41,9 @@ class backEndController {
 
     }
 
+    /**
+     * @throws Exception
+     */
     public function afficherListeChapitre()
     {
             $chapitreManager = new ChapitreManager();
@@ -39,6 +52,10 @@ class backEndController {
             include 'view/backEnd/administration.php';
     }
 
+    /**
+     * @param $id
+     * @throws Exception
+     */
     public function afficherChapitre($id)
     {
         $chapitreManager = new ChapitreManager();
@@ -47,6 +64,10 @@ class backEndController {
         include 'view/backEnd/lireChapitre.php';
     }
 
+    /**
+     * @param $id
+     * @throws Exception
+     */
     public function afficherModifierChapitre($id)
     {
 
@@ -59,11 +80,17 @@ class backEndController {
         include 'view/backEnd/modifierChapitre.php';
     }
 
+    /**
+     *
+     */
     public function afficherAjouterChapitre()
     {
             include 'view/backEnd/ajoutChapitre.php';
     }
 
+    /**
+     * @throws Exception
+     */
     public function afficherListeCommentaires()
     {
        $commentaireManager = new CommentaireManager();
@@ -72,10 +99,12 @@ class backEndController {
         include 'view/backEnd/gestionCommentaire.php';
     }
 
+    /**
+     *
+     */
     public function ajouterChapitre()
     {
-        $uploaddir = "F:\wamp64\www\assets\images\\";
-        $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+        $uploadfile = $this->uploaddir . basename($_FILES['image']['name']);
         if (!file_exists($uploadfile)) {
 
             $chapitre = new Chapitre();
@@ -93,13 +122,18 @@ class backEndController {
 
     }
 
+    /**
+     * @param $id
+     */
     public function modifierChapitre($id)
     {
+        $uploadfile = $this->uploaddir . basename($_FILES['image']['name']);
 
-        $uploaddir = "F:\wamp64\www\assets\images\\";
-        $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         if (!file_exists($uploadfile)) {
-
+            $ancienneImage = $_POST['ancienneImage'];
+            if(file_exists($ancienneImage)) {
+                unlink($ancienneImage);
+            }
             $chapitre = new Chapitre();
             $chapitre->setId((int)$id);
             $chapitre->setTitre(htmlspecialchars($_POST['titre']));
@@ -114,31 +148,44 @@ class backEndController {
         }
     }
 
+    /**
+     * @param $id
+     */
     public function supprimerChapitre($id)
     {
         $chapitreManager = new ChapitreManager();
-        $chapitre=$chapitreManager->read((int)$id);
-        $image=$chapitre->getImage();
-        $myFile = 'F:\wamp64\www\assets\images\\'.$image.'.jpg';
+        $image = $_GET['image'];
+        $myFile = $this->uploaddir . $image.'.jpg';
         if (file_exists($myFile)) {
             unlink($myFile);
         }
         $chapitreManager = new ChapitreManager();
         $chapitreManager->delete((int)$id);
+        $this->supprimerCommentaire((int)$id,true);
     }
 
-    public function supprimerCommentaire($id)
+    /**
+     * @param $id
+     * @param $chapitres
+     */
+    public function supprimerCommentaire($id, $chapitres)
     {
         $commentaireManager = new CommentaireManager();
-        $commentaireManager->delete((int)$id);
+        $commentaireManager->delete((int)$id,$chapitres);
     }
 
+    /**
+     * @param $id
+     */
     public function desactiverSignalement($id)
     {
         $commentaireManager = new CommentaireManager();
         $commentaireManager->update(0,(int)$id);
     }
 
+    /**
+     * @param $token
+     */
     public function genererHash($token)
     {
         $pw=password_hash($token,PASSWORD_BCRYPT);
@@ -149,6 +196,9 @@ class backEndController {
         fclose($fp);
     }
 
+    /**
+     * @return bool
+     */
     public function verificationToken()
     {
         if(isset($_SESSION['token'])){
@@ -166,6 +216,9 @@ class backEndController {
         }
     }
 
+    /**
+     *
+     */
     public function deconnexion()
     {
         session_destroy();

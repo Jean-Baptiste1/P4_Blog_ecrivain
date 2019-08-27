@@ -68,7 +68,7 @@
         <div id="avisConteneur">
            <form id="formulaire" name="formAvis" action="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>&action=ajouterCommentaire#services" method="post">
             <h2>Votre commentaire</h2>
-               <input type="text" name="pseudo" placeholder="Pseudo" autofocus required>
+               <input type="text" name="pseudo" placeholder="Pseudo" required>
                <textarea id="commentaire" name="contenu"></textarea>
                <button class="bouton" type="submit">envoyer</button>
             </form>

@@ -5,7 +5,8 @@
                 <p>Titre :</p>
                 <input type="text" name="titre" value="<?=$chapitre->getTitre()?>" required>
                 <p>Image (*.jpg) : </p>
-                <p><img src="/assets/images/<?=$chapitre->getImage()?>.jpg" alt=""></p>
+                <p><img src="assets/images/chapitre/<?=$chapitre->getImage()?>.jpg" alt=""></p>
+                <input type="hidden" name="ancienneImage" value="assets/images/chapitre/<?=$chapitre->getImage()?>.jpg">
                 <input type="file" name="image" accept="image/jpeg">
                 <p>Contenu :</p>
                 <textarea id="backEnd" name="contenu" required><?=$chapitre->getContenu()?></textarea>

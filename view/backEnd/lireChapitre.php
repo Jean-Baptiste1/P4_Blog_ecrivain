@@ -9,11 +9,11 @@
              <div class="albumChapitres">
 
                              <figure>
-                                 <img src="/assets/images/<?=$chapitre->getImage()?>.jpg"/>
+                                 <img src="assets/images/chapitre/<?=$chapitre->getImage()?>.jpg"/>
                                  <figcaption>
                                      <p><a href="index.php?pages=backEnd&page=modifierChapitre&chapitre=<?=$chapitre->getId()?>">modifier</a>
                                          |
-                                         <a href="index.php?pages=backEnd&page=administration&action=supprimerChapitre&chapitre=<?=$chapitre->getId()?>">supprimer</a></p>
+                                         <a href="index.php?pages=backEnd&page=administration&action=supprimerChapitre&chapitre=<?=$chapitre->getId()?>&image=<?=$chapitre->getImage()?>">supprimer</a></p>
                                  </figcaption>
                              </figure>
 

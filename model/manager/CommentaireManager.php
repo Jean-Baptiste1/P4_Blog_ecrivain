@@ -1,13 +1,23 @@
 <?php
 
+/**
+ * Class CommentaireManager
+ */
 class CommentaireManager
 {
 
+    /**
+     * CommentaireManager constructor.
+     */
     public function __construct()
     {
         $this->connexion = new Database();
     }
 
+    /**
+     * @param Commentaire $commentaire
+     * @param $idChapitre
+     */
     public function create(Commentaire $commentaire, $idChapitre)
     {
         try
@@ -72,7 +82,11 @@ class CommentaireManager
 
     }
 
-    public function update(int $signalement,int $idCommentaire) {
+    /**
+     * @param int $signalement
+     * @param int $idCommentaire
+     */
+    public function update(int $signalement, int $idCommentaire) {
 
         try
         {
@@ -94,22 +108,42 @@ class CommentaireManager
         $this->connexion->closeConnection();
     }
 
-    public function delete($id)
+    /**
+     * @param $id
+     * @param $chapitres
+     */
+    public function delete($id, $chapitres)
     {
-        try
-        {
-            $pdo = $this->connexion->openConnection();
+       if ($chapitres){
+           try
+           {
+               $pdo = $this->connexion->openConnection();
 
-            $sql = "DELETE FROM `commentaire` where id = :id";
+               $sql = "DELETE FROM `commentaire` where id_chapitre = :id";
 
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':id',$id,PDO::PARAM_INT);
-            $stmt->execute();
+               $stmt = $pdo->prepare($sql);
+               $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+               $stmt->execute();
 
-        } catch (PDOException $e) {
-            echo "Problème de connexion: " . $e->getMessage();
-        }
+           } catch (PDOException $e) {
+               echo "Problème de connexion: " . $e->getMessage();
+           }
 
-        $this->connexion->closeConnection();
+       } else {
+           try
+           {
+               $pdo = $this->connexion->openConnection();
+
+               $sql = "DELETE FROM `commentaire` where id = :id";
+
+               $stmt = $pdo->prepare($sql);
+               $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+               $stmt->execute();
+
+           } catch (PDOException $e) {
+               echo "Problème de connexion: " . $e->getMessage();
+           }
+       }
+       $this->connexion->closeConnection();
     }
 }

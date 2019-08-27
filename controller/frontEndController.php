@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * Class frontEndController
+ */
 class frontEndController
 {
-        public function listChapitres()
+    /**
+     * @throws Exception
+     */
+    public function listChapitres()
         {
             $chapitreManager = new ChapitreManager();
             $chapitres = $chapitreManager->read(null);
@@ -10,13 +16,19 @@ class frontEndController
             include 'view/frontEnd/accueil.php';
         }
 
-        public function activerSignalement($commentaire)
+    /**
+     * @param $commentaire
+     */
+    public function activerSignalement($commentaire)
         {
             $commentaireManager = new CommentaireManager();
             $commentaireManager->update(1, $this->securisation($commentaire));
         }
 
-        public function ajouterCommentaire($chapitre)
+    /**
+     * @param $chapitre
+     */
+    public function ajouterCommentaire($chapitre)
         {
                 $commentaire = new Commentaire();
                 $commentaire->setPseudo($this->securisation($_POST['pseudo']));
@@ -26,7 +38,11 @@ class frontEndController
                 $commentaireManager->create($commentaire, $this->securisation($chapitre));
         }
 
-        public function lireChapitre($idChapitre)
+    /**
+     * @param $idChapitre
+     * @throws Exception
+     */
+    public function lireChapitre($idChapitre)
         {
             $chapitreManager = new ChapitreManager();
             $chapitre = $chapitreManager->read($idChapitre);
@@ -34,7 +50,11 @@ class frontEndController
             include 'view/frontEnd/voirChapitre.php';
         }
 
-        public function securisation($donnee)
+    /**
+     * @param $donnee
+     * @return string
+     */
+    public function securisation($donnee)
         {
             //Suppression de l'html et du PHP
             $securiser = strip_tags($donnee);

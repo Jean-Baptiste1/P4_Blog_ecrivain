@@ -17,7 +17,7 @@
     foreach($chapitres as $chapitre)
     { ?>
             <figure>
-                <a href="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>"><img src="/assets/images/<?=$chapitre->getImage()?>.jpg" alt=""></a>
+                <a href="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>"><img src="assets/images/chapitre/<?=$chapitre->getImage()?>.jpg" alt=""></a>
                 <figcaption>
                     <p><b><a href="index.php?pages=frontEnd&chapitre=<?=$chapitre->getId()?>"><?=$chapitre->getTitre()?>
 			</a></b></p>

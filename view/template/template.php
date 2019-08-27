@@ -10,7 +10,7 @@
     <!-- Appel de la feuille de style, de la police... -->
     <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
 
-    <script src="/assets/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+    <script src="assets/js/tinymce/tinymce.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         tinymce.init({
             selector: 'textarea#backEnd',
@@ -51,8 +51,8 @@
     <nav>
         <ul>
             <input id="nav">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/#chapitres">Chapitres</a></li>
+            <li><a href="./">Accueil</a></li>
+            <li><a href="./#chapitres">Chapitres</a></li>
             <li>
                 <?php
                 //Affiche un lien de déconnexion quand l'utilisateur est connécté

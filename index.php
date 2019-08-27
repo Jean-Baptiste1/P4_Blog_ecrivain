@@ -23,6 +23,11 @@ spl_autoload_register(/**
     }
 });
 
+/* Activer les erreurs php */
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+
 $frontEndcontroller=new frontEndController();
 $backEndController=new backEndController();
 
@@ -79,7 +84,7 @@ if (isset($_GET['pages'])) {
                     if(isset($_GET['action'])){
                         switch($_GET['action']) {
                             case "supprimerCommentaire":
-                                $backEndController->supprimerCommentaire($_GET['commentaire']);
+                                $backEndController->supprimerCommentaire($_GET['commentaire'],false);
                                 break;
                             case "desactiverSignalement":
                                 $backEndController->desactiverSignalement($_GET['commentaire']);

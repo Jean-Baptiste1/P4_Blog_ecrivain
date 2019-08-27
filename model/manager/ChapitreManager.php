@@ -1,13 +1,22 @@
 <?php
 
+/**
+ * Class ChapitreManager
+ */
 class ChapitreManager
 {
 
+    /**
+     * ChapitreManager constructor.
+     */
     public function __construct()
     {
         $this->connexion = new Database();
     }
 
+    /**
+     * @param Chapitre $chapitre
+     */
     public function create(Chapitre $chapitre)
     {
 
@@ -123,6 +132,9 @@ class ChapitreManager
         $this->connexion->closeConnection();
     }
 
+    /**
+     * @param Chapitre $chapitre
+     */
     public function update(Chapitre $chapitre)
     {
 
@@ -145,6 +157,9 @@ class ChapitreManager
         $this->connexion->closeConnection();
     }
 
+    /**
+     * @param $id
+     */
     public function delete($id)
     {
 

@@ -1,15 +1,27 @@
 <?php
 
+/**
+ * Class Database
+ */
 class Database
 {
 
-       private $options = array(
+    /**
+     * @var array
+     */
+    private $options = array(
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     );
 
+    /**
+     * @var
+     */
     protected $connection;
 
+    /**
+     * @return PDO
+     */
     public function openConnection()
     
     {
@@ -27,6 +39,9 @@ class Database
         }
     }
 
+    /**
+     *
+     */
     public function closeConnection()
     {
         $this->connection = null;

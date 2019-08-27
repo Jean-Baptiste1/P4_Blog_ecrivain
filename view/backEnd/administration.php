@@ -15,11 +15,11 @@
                 foreach ($chapitres as $chapitre) {
                     ?>
                             <figure>
-                                <img src="/assets/images/<?=$chapitre->getImage()?>.jpg"/>
+                                <img src="assets/images/chapitre/<?=$chapitre->getImage()?>.jpg"/>
                                 <figcaption>
                                     <p><h3><a href="index.php?pages=backEnd&page=lireChapitre&chapitre=<?=$chapitre->getId()?>"><?=$chapitre->getTitre()?></a></h3></p>
                                     <p><a href="index.php?pages=backEnd&page=modifierChapitre&chapitre=<?=$chapitre->getId()?>">modifier</a>
-                                    | <a href="index.php?pages=backEnd&page=administration&action=supprimerChapitre&chapitre=<?=$chapitre->getId()?>" onclick="Supprimer();">supprimer</a></p>
+                                    | <a href="index.php?pages=backEnd&page=administration&action=supprimerChapitre&chapitre=<?=$chapitre->getId()?>&image=<?=$chapitre->getImage()?>" onclick="Supprimer();">supprimer</a></p>
                             </figcaption>
                                 </figure>
              <?php
