@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 26 août 2019 à 16:56
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Hôte : localhost:3306
+-- Généré le :  mar. 27 août 2019 à 14:46
+-- Version du serveur :  10.0.38-MariaDB-0+deb8u1
+-- Version de PHP :  7.1.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `p4_livre`
+-- Base de données :  `projetsOC`
 --
 
 -- --------------------------------------------------------
@@ -28,15 +28,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `chapitre`
 --
 
-DROP TABLE IF EXISTS `chapitre`;
-CREATE TABLE IF NOT EXISTS `chapitre` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `chapitre` (
+  `id` int(10) NOT NULL,
   `titre` char(64) NOT NULL,
   `contenu` text NOT NULL,
   `image` char(64) NOT NULL,
-  `dateAjout` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+  `dateAjout` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `chapitre`
@@ -58,25 +56,55 @@ INSERT INTO `chapitre` (`id`, `titre`, `contenu`, `image`, `dateAjout`) VALUES
 -- Structure de la table `commentaire`
 --
 
-DROP TABLE IF EXISTS `commentaire`;
-CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `commentaire` (
+  `id` int(10) NOT NULL,
   `pseudo` char(16) NOT NULL,
   `contenu` varchar(255) NOT NULL,
-  `dateAjout` timestamp NOT NULL,
+  `dateAjout` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `signalement` tinyint(1) NOT NULL DEFAULT '0',
-  `id_chapitre` int(10) NOT NULL,
-  PRIMARY KEY (`id`,`id_chapitre`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+  `id_chapitre` int(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commentaire`
 --
 
 INSERT INTO `commentaire` (`id`, `pseudo`, `contenu`, `dateAjout`, `signalement`, `id_chapitre`) VALUES
-(59, 'jean-baptiste', 'super chapitre !', '2019-08-26 13:26:14', 0, 1),
-(60, 'jean-baptiste', 'super', '2019-08-26 13:26:21', 0, 1),
-(58, 'jean-baptiste', 'super chapitre !', '2019-08-26 13:23:38', 0, 1);
+(87, 'Jacques', 'Super !', '2019-08-27 14:28:51', 0, 24),
+(59, 'jean-baptiste', 'super chapitre !', '2019-08-27 14:27:57', 1, 1),
+(60, 'jean-baptiste', 'super', '2019-08-27 14:18:47', 0, 1);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `chapitre`
+--
+ALTER TABLE `chapitre`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `commentaire`
+--
+ALTER TABLE `commentaire`
+  ADD PRIMARY KEY (`id`,`id_chapitre`) USING BTREE;
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `chapitre`
+--
+ALTER TABLE `chapitre`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT pour la table `commentaire`
+--
+ALTER TABLE `commentaire`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
