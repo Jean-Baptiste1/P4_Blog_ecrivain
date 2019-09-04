@@ -27,9 +27,8 @@ spl_autoload_register(/**
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
-$frontEndcontroller=new frontEndController();
-$backEndController=new backEndController();
+$frontEndController = new FrontEndController();
+$backEndController = new BackEndController();
 
 if (isset($_GET['pages'])) {
 
@@ -39,14 +38,14 @@ if (isset($_GET['pages'])) {
         if (isset($_GET['action'])) {
             switch ($_GET['action']) {
                 case "activerSignalement":
-                    $frontEndcontroller->activerSignalement($_GET['commentaire']);
+                    $frontEndController->activerSignalement($_GET['commentaire']);
                     break;
                 case "ajouterCommentaire":
-                    $frontEndcontroller->ajouterCommentaire($_GET['chapitre']);
+                    $frontEndController->ajouterCommentaire($_GET['chapitre']);
                     break;
             }
         }
-        $frontEndcontroller->lireChapitre($_GET['chapitre']);
+        FrontEndcontroller::lireChapitre($_GET['chapitre']);
 
     //Affiche le Backend
     } elseif ($_GET['pages'] == 'backEnd') {
@@ -112,7 +111,7 @@ if (isset($_GET['pages'])) {
     }
 }else{
   //Affiche par défaut la liste des chapitres pour la page d'accueil dans le FrontEnd
-  $frontEndcontroller->listChapitres();
+  $frontEndController->listChapitres();
 }
 
 $content = ob_get_clean();

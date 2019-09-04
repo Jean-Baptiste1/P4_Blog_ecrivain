@@ -22,7 +22,7 @@ class frontEndController
     public function activerSignalement($commentaire)
         {
             $commentaireManager = new CommentaireManager();
-            $commentaireManager->update(1, $this->securisation($commentaire));
+            $commentaireManager->update(1, self::securisation($commentaire));
         }
 
     /**
@@ -31,11 +31,11 @@ class frontEndController
     public function ajouterCommentaire($chapitre)
         {
                 $commentaire = new Commentaire();
-                $commentaire->setPseudo($this->securisation($_POST['pseudo']));
-                $commentaire->setContenu($this->securisation($_POST['contenu']));
+                $commentaire->setPseudo(self::securisation($_POST['pseudo']));
+                $commentaire->setContenu(self::securisation($_POST['contenu']));
 
                 $commentaireManager = new CommentaireManager();
-                $commentaireManager->create($commentaire, $this->securisation($chapitre));
+                $commentaireManager->create($commentaire, self::securisation($chapitre));
         }
 
     /**

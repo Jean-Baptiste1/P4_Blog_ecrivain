@@ -49,17 +49,15 @@ class Chapitre {
      * @param string $contenu
      * @param string $image
      * @param date $dateAjout
-     * @param date $dateModif
      * @param null $listCommentaire
      */
-    public function __construct($id = null, $titre = null,$contenu = null,$image = null,$dateAjout = null,$dateModif =null,$listCommentaire=null)
+    public function __construct($id = null, $titre = null,$contenu = null,$image = null,$dateAjout = null,$listCommentaire=null)
 	{
         $this->id=$id;
 	    $this->titre=$titre;
 		$this->contenu=$contenu;
         $this->image=$image;
 		$this->dateAjout=$dateAjout;
-        $this->dateModif=$dateModif;
         $this->listCommentaire=$listCommentaire;
 	}
 
