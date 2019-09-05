@@ -45,7 +45,7 @@ if (isset($_GET['pages'])) {
                     break;
             }
         }
-        FrontEndcontroller::lireChapitre($_GET['chapitre']);
+        $frontEndController->lireChapitre($_GET['chapitre']);
 
     //Affiche le Backend
     } elseif ($_GET['pages'] == 'backEnd') {

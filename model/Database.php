@@ -28,8 +28,13 @@ class Database
         try 
         {
             $config = new Config();
-            $this->connection = new PDO($config->getServer(),$config->getUser(),$config->getPass(), $this->options);
-            
+
+            if (getenv('HTTP_HOST') == $config->getReferer()) {
+                $this->connection = new PDO($config->getServerLinux(),$config->getUserLinux(),$config->getPassLinux(), $this->options);
+            } else {
+                $this->connection = new PDO($config->getServerWindows(),$config->getUserWindows());
+            }
+
             return $this->connection;
         } 
         catch (PDOException $e) 

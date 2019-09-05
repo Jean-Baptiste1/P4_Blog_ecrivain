@@ -104,7 +104,7 @@ class backEndController {
      */
     public function ajouterChapitre()
     {
-        $uploadfile = $this->uploaddir . basename($_FILES['image']['name']);
+        $uploadfile = $this->uploadDir() . basename($_FILES['image']['name']);
         if (!file_exists($uploadfile)) {
 
             $chapitre = new Chapitre();
@@ -127,7 +127,7 @@ class backEndController {
      */
     public function modifierChapitre($id)
     {
-        $uploadfile = $this->uploaddir . basename($_FILES['image']['name']);
+        $uploadfile = $this->uploadDir() . basename($_FILES['image']['name']);
 
         if (!file_exists($uploadfile)) {
             $ancienneImage = $_POST['ancienneImage'];
@@ -155,7 +155,7 @@ class backEndController {
     {
         $chapitreManager = new ChapitreManager();
         $image = $_GET['image'];
-        $myFile = $this->uploaddir . $image.'.jpg';
+        $myFile = $this->uploadDir() . $image.'.jpg';
         if (file_exists($myFile)) {
             unlink($myFile);
         }
@@ -216,6 +216,18 @@ class backEndController {
         }
     }
 
+    public function uploadDir() {
+
+        $config = new Config();
+
+        if (getenv('HTTP_HOST') == $config->getReferer()) {
+            $uploadDir = $config->getUploaddirLinux();
+        }else{
+            $uploadDir= $config->getUploaddirWindows();
+        }
+
+        return $uploadDir;
+    }
     /**
      *
      */
