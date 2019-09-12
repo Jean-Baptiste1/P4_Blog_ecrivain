@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Class Database
+ * Class Database gère la connection à la base de données
  */
 class Database
 {
 
     /**
-     * @var array
+     * @var array $opions options PDO
      */
     private $options = array(
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -15,11 +15,12 @@ class Database
     );
 
     /**
-     * @var
+     * @var $connection
      */
     protected $connection;
 
     /**
+     * @method openConnection permet d'ouvrir une connexion à la base de données
      * @return PDO
      */
     public function openConnection()
@@ -45,7 +46,7 @@ class Database
     }
 
     /**
-     *
+     * @method closeConnection permet de fermer la connection à la base de données
      */
     public function closeConnection()
     {

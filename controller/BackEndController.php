@@ -1,27 +1,26 @@
 ﻿<?php
+include 'conf/auth.php';
 
 /**
- * Class backEndController
+ * Class backEndController gère le BackEnd
  */
 class backEndController {
 
     /**
-     * @var string
+     * @var string $uploadir chemin d'accès aux images des chapitres
      */
     private $uploaddir = "/var/www/vhosts/lecalvez.cloud/projetsoc.lecalvez.cloud/projet4/assets/images/chapitre/";
 
     /**
-     * @throws Exception
+     * Authentifie l'utilisateur en utilisant les constantes du fichier auth.php
      */
     public function authentification(){
 
         if(!empty($_POST['identifiant']) || !empty($_POST['motDePasse'])) {
 
-            $file=file("conf/auth.conf");
-            $identifiant=str_replace("\r\n","",$file[6]);
-            $motDePasse=$file[8];
 
-            if($_POST['identifiant'] == $identifiant && $_POST['motDePasse'] == $motDePasse) {
+
+            if(filter_input(INPUT_POST,'identifiant',FILTER_SANITIZE_STRING) == IDENTIFIANT && filter_input(INPUT_POST,'motDePasse',FILTER_SANITIZE_STRING) == MOTDEPASSE) {
 
                 //On enregistre notre token
                 $token = bin2hex(random_bytes (64));
@@ -42,7 +41,7 @@ class backEndController {
     }
 
     /**
-     * @throws Exception
+     * Affiche la liste des chapitres
      */
     public function afficherListeChapitre()
     {
@@ -53,35 +52,35 @@ class backEndController {
     }
 
     /**
-     * @param $id
-     * @throws Exception
+     * Affiche un chapitre
+     * @param int $id récupère l'id du chapitre
      */
     public function afficherChapitre($id)
     {
         $chapitreManager = new ChapitreManager();
-        $chapitre=$chapitreManager->read((int)$id);
+        $chapitre=$chapitreManager->read($id);
 
         include 'view/backEnd/lireChapitre.php';
     }
 
     /**
-     * @param $id
-     * @throws Exception
+     * Affiche le chapitre à modifier
+     * @param int $id récupère l'id du chapitre
      */
     public function afficherModifierChapitre($id)
     {
 
         $chapitre = new Chapitre();
-        $chapitre->setId(htmlspecialchars($id));
+        $chapitre->setId($id);
 
         $chapitreManager = new ChapitreManager();
-        $chapitre=$chapitreManager->read((int)$id);
+        $chapitre=$chapitreManager->read($id);
 
         include 'view/backEnd/modifierChapitre.php';
     }
 
     /**
-     *
+     * Permet d'afficher la page ajouter chapitre
      */
     public function afficherAjouterChapitre()
     {
@@ -89,7 +88,7 @@ class backEndController {
     }
 
     /**
-     * @throws Exception
+     * Affiche la liste des commentaires
      */
     public function afficherListeCommentaires()
     {
@@ -100,7 +99,7 @@ class backEndController {
     }
 
     /**
-     *
+     * Ajoute un chapitre
      */
     public function ajouterChapitre()
     {
@@ -108,9 +107,8 @@ class backEndController {
         if (!file_exists($uploadfile)) {
 
             $chapitre = new Chapitre();
-            $chapitre->setTitre(htmlspecialchars($_POST['titre']));
-            $chapitre->setContenu(htmlspecialchars($_POST['contenu']));
-
+            $chapitre->setTitre(filter_input(INPUT_POST,'titre',FILTER_SANITIZE_STRING));
+            $chapitre->setContenu(filter_input(INPUT_POST,'contenu',FILTER_SANITIZE_SPECIAL_CHARS));
 
             move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
 
@@ -123,33 +121,46 @@ class backEndController {
     }
 
     /**
-     * @param $id
+     * Modifie un chapitre
+     * @param int $id récupèrer l'id du chapitre
      */
     public function modifierChapitre($id)
     {
         $uploadfile = $this->uploadDir() . basename($_FILES['image']['name']);
+        $ancienneImage = $_POST['ancienneImage'];
+
+            $chapitre = new Chapitre();
+            $chapitre->setId($id);
+            $chapitre->setTitre(filter_input(INPUT_POST,'titre',FILTER_SANITIZE_STRING));
+            $chapitre->setContenu(filter_input(INPUT_POST,'contenu',FILTER_SANITIZE_SPECIAL_CHARS));
+
 
         if (!file_exists($uploadfile)) {
-            $ancienneImage = $_POST['ancienneImage'];
-            if(file_exists($ancienneImage)) {
+
+            //Suppression de l'ancienne image
+            if (file_exists($ancienneImage)) {
                 unlink($ancienneImage);
             }
-            $chapitre = new Chapitre();
-            $chapitre->setId((int)$id);
-            $chapitre->setTitre(htmlspecialchars($_POST['titre']));
-            $chapitre->setContenu(htmlspecialchars($_POST['contenu']));
 
+            //Enregistre l'image en la renomant avec le nom d'origine
             move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
 
+            //On enlève l'extension de l'image .jpg pour garder uniquement le nom de l'image
             $chapitre->setImage(substr($_FILES['image']['name'],0,-4));
+        } else {
+            $image = explode("/",$ancienneImage);
+            $chapitre->setImage(substr($image[3],0,-4));
+
+        }
 
             $chapitreManager = new ChapitreManager();
             $chapitreManager->update($chapitre);
-        }
+
     }
 
     /**
-     * @param $id
+     * Supprime un chapitre
+     * @param int $id récupère l'id du chapitre
      */
     public function supprimerChapitre($id)
     {
@@ -160,31 +171,34 @@ class backEndController {
             unlink($myFile);
         }
         $chapitreManager = new ChapitreManager();
-        $chapitreManager->delete((int)$id);
-        $this->supprimerCommentaire((int)$id,true);
+        $chapitreManager->delete($id);
+        $this->supprimerCommentaire($id,true);
     }
 
     /**
-     * @param $id
-     * @param $chapitres
+     * Supprime un commentaire
+     * @param int $id récupère l'id du commentaire
+     * @param boolean $chapitres à False permet de supprimer unique un commentaire
      */
     public function supprimerCommentaire($id, $chapitres)
     {
         $commentaireManager = new CommentaireManager();
-        $commentaireManager->delete((int)$id,$chapitres);
+        $commentaireManager->delete($id,$chapitres);
     }
 
     /**
-     * @param $id
+     * Désactive le signalement d'un commentaire
+     * @param int $id recupère l'id du commentaire
      */
     public function desactiverSignalement($id)
     {
         $commentaireManager = new CommentaireManager();
-        $commentaireManager->update(0,(int)$id);
+        $commentaireManager->update(0,$id);
     }
 
     /**
-     * @param $token
+     * Génère le hashage de la clef du token pour la crypter et la stock dans le fichier token.conf
+     * @param string $token récupère la clef
      */
     public function genererHash($token)
     {
@@ -197,7 +211,8 @@ class backEndController {
     }
 
     /**
-     * @return bool
+     * Vérification de la validité de la session en comparant le token en session et la clef de hashage stockée dans le fichier
+     * @return bool renvoie true si le token correspond à la clef de hashage
      */
     public function verificationToken()
     {
@@ -216,6 +231,10 @@ class backEndController {
         }
     }
 
+    /**
+     * Retourne le bon chemin soit sous Windows ou Linux
+     * @return string $uploadDir retourne le chemin
+     */
     public function uploadDir() {
 
         $config = new Config();
@@ -229,7 +248,7 @@ class backEndController {
         return $uploadDir;
     }
     /**
-     *
+     * Met fin à la session
      */
     public function deconnexion()
     {

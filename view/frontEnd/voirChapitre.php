@@ -6,7 +6,7 @@
                 <h2><?=$chapitre->getTitre()?></h2>
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <hr>
-                <p><?=$chapitre->getContenu()?></p>
+                <?=$chapitre->getContenu()?>
                 <p><?=$chapitre->getDateAjout()?></p>
             </div>
         </div>

@@ -4,11 +4,10 @@ ob_start();
 
 session_start();
 
-//Utlisation d'une fonction anonyme pour l'autoloader permettant de charger les classes
+//Utlisation d'une fonction anonyme pour l'autoloader permettant de charger les classes automatiquement lors d'un New sur un objet
+spl_autoload_register(
 
-spl_autoload_register(/**
- * @param $class
- */ function ($class)
+    function ($class)
 {
     if (file_exists($file = 'controller/' . $class . '.php')) {
         include $file;
@@ -23,47 +22,51 @@ spl_autoload_register(/**
     }
 });
 
-/* Activer les erreurs php */
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 $frontEndController = new FrontEndController();
 $backEndController = new BackEndController();
 
-if (isset($_GET['pages'])) {
+//Sécurisation des GET
+$pages = filter_input(INPUT_GET,'pages',FILTER_SANITIZE_STRING);
+$page = filter_input(INPUT_GET,'page',FILTER_SANITIZE_STRING);
+$action = filter_input(INPUT_GET,'action',FILTER_SANITIZE_STRING);
+$chapitre = filter_input(INPUT_GET,'chapitre',FILTER_SANITIZE_NUMBER_INT);
+$commentaire = filter_input(INPUT_GET,'commentaire',FILTER_SANITIZE_NUMBER_INT);
 
-    //Affiche le FrontEnd
-    if ($_GET['pages']=='frontEnd') {
 
-        if (isset($_GET['action'])) {
-            switch ($_GET['action']) {
+if (isset($pages)) {
+
+    //Partie FrontEnd
+    if ($pages=='frontEnd') {
+
+        if (isset($action)) {
+            switch ($action) {
                 case "activerSignalement":
-                    $frontEndController->activerSignalement($_GET['commentaire']);
+                    $frontEndController->activerSignalement($commentaire);
                     break;
                 case "ajouterCommentaire":
-                    $frontEndController->ajouterCommentaire($_GET['chapitre']);
+                    $frontEndController->ajouterCommentaire($chapitre);
                     break;
             }
         }
-        $frontEndController->lireChapitre($_GET['chapitre']);
+        $frontEndController->lireChapitre($chapitre);
 
-    //Affiche le Backend
-    } elseif ($_GET['pages'] == 'backEnd') {
+    //Partie Backend
+    } elseif ($pages == 'backEnd') {
 
-        if (isset($_GET['page']) && $backEndController->verificationToken()) {
-            switch ($_GET['page']) {
+        if (isset($page) && $backEndController->verificationToken()) {
+            switch ($page) {
                 case "administration":
 
-                        if (isset($_GET['action'])) {
-                            switch ($_GET['action']) {
+                        if (isset($action)) {
+                            switch ($action) {
                                 case "supprimerChapitre":
-                                    $backEndController->supprimerChapitre($_GET['chapitre']);
+                                    $backEndController->supprimerChapitre($chapitre);
                                     break;
                                 case "ajouterChapitre":
                                     $backEndController->ajouterChapitre();
                                     break;
                                 case "modifierChapitre":
-                                    $backEndController->modifierChapitre($_GET['chapitre']);
+                                    $backEndController->modifierChapitre($chapitre);
                                     break;
                             }
                         }
@@ -71,22 +74,22 @@ if (isset($_GET['pages'])) {
                         $backEndController->afficherListeChapitre();
                     break;
                 case "lireChapitre":
-                    $backEndController->afficherChapitre($_GET['chapitre']);
+                    $backEndController->afficherChapitre($chapitre);
                     break;
                 case "ajouterChapitre" :
                     $backEndController->afficherAjouterChapitre();
                     break;
                 case "modifierChapitre":
-                    $backEndController->afficherModifierChapitre($_GET['chapitre']);
+                    $backEndController->afficherModifierChapitre($chapitre);
                     break;
                 case "gestionCommentaires" :
-                    if(isset($_GET['action'])){
-                        switch($_GET['action']) {
+                    if(isset($action)){
+                        switch($action) {
                             case "supprimerCommentaire":
-                                $backEndController->supprimerCommentaire($_GET['commentaire'],false);
+                                $backEndController->supprimerCommentaire($commentaire,false);
                                 break;
                             case "desactiverSignalement":
-                                $backEndController->desactiverSignalement($_GET['commentaire']);
+                                $backEndController->desactiverSignalement($commentaire);
                                 break;
                         }
                     }

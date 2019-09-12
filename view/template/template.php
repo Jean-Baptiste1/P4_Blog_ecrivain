@@ -34,6 +34,8 @@
             if (confirm("Etes vous sûr ?"))
             {
                 return true;
+            } else {
+                return false;
             }
         }
     </script>

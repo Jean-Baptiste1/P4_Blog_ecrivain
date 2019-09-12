@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Class frontEndController
+ * Class frontEndController gère la partie FrontEnd
  */
 class frontEndController
 {
     /**
-     * @throws Exception
+     * Affiche la liste des chapitres
      */
     public function listChapitres()
         {
@@ -17,30 +17,32 @@ class frontEndController
         }
 
     /**
-     * @param $commentaire
+     * Active un signalement
+     * @param int $commentaire retourne l'id du commentaire
      */
     public function activerSignalement($commentaire)
         {
             $commentaireManager = new CommentaireManager();
-            $commentaireManager->update(1, self::securisation($commentaire));
+            $commentaireManager->update(1, $commentaire);
         }
 
     /**
-     * @param $chapitre
+     * Ajoute un commentaire
+     * @param int $chapitre retourne l'id du chapitre
      */
     public function ajouterCommentaire($chapitre)
         {
                 $commentaire = new Commentaire();
-                $commentaire->setPseudo(self::securisation($_POST['pseudo']));
-                $commentaire->setContenu(self::securisation($_POST['contenu']));
+                $commentaire->setPseudo(filter_input(INPUT_POST,'pseudo',FILTER_SANITIZE_STRING));
+                $commentaire->setContenu(filter_input(INPUT_POST,'contenu',FILTER_SANITIZE_STRING));
 
                 $commentaireManager = new CommentaireManager();
-                $commentaireManager->create($commentaire, self::securisation($chapitre));
+                $commentaireManager->create($commentaire, $chapitre);
         }
 
     /**
-     * @param $idChapitre
-     * @throws Exception
+     * Affiche un chapitre
+     * @param int $idChapitre retourne l'id du chapitre
      */
     public function lireChapitre($idChapitre)
         {
@@ -50,15 +52,4 @@ class frontEndController
             include 'view/frontEnd/voirChapitre.php';
         }
 
-    /**
-     * @param $donnee
-     * @return string
-     */
-    public function securisation($donnee)
-        {
-            //Suppression de l'html et du PHP
-            $securiser = strip_tags($donnee);
-
-            return $securiser;
-        }
 }

@@ -17,11 +17,8 @@
                                  </figcaption>
                              </figure>
 
-
-
-                 <p><?=strip_tags(htmlspecialchars_decode($chapitre->getContenu()))?></p>
+                 <?=$chapitre->getContenu()?>
                  <p><?=$chapitre->getDateAjout()?></p>
-
 
              </div>
          <div id="retour"><a href="index.php?pages=backEnd&page=administration">retour</a></div>

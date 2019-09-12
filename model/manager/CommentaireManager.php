@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class CommentaireManager
+ * Class CommentaireManager gère les requêtes en base de données
  */
 class CommentaireManager
 {
@@ -15,8 +15,9 @@ class CommentaireManager
     }
 
     /**
-     * @param Commentaire $commentaire
-     * @param $idChapitre
+     * @method create Permet de créer un commentaire
+     * @param Commentaire $commentaire récupère un objet Commentaire
+     * @param int $idChapitre récupère l'id du chapitre du commentaire
      */
     public function create(Commentaire $commentaire, $idChapitre)
     {
@@ -45,9 +46,8 @@ class CommentaireManager
     }
 
     /**
-     * @method getChapitre Affiche un Commentaire
+     * @method read Permet de lire tous les commentaires
      * @return array $Commentaires Retourne les informations concernant le chapitre suivant les propriétés de l'objet Commentaire
-     * @throws Exception
      */
     public function read()
     {
@@ -83,8 +83,9 @@ class CommentaireManager
     }
 
     /**
-     * @param int $signalement
-     * @param int $idCommentaire
+     * @method update permet de mettre à jour un signalement
+     * @param int $signalement récupère l'état 0 ou 1 du signalement
+     * @param int $idCommentaire récupère l'id du commentaire
      */
     public function update(int $signalement, int $idCommentaire) {
 
@@ -109,8 +110,9 @@ class CommentaireManager
     }
 
     /**
-     * @param $id
-     * @param $chapitres
+     * @method delete permet de supprimer un commentiare
+     * @param int $id récupère l'id du commentaire
+     * @param bool $chapitres récupère true pour supprimer tous les commentaires d'un chapitre sinon false pour supprimer un seul chapitre
      */
     public function delete($id, $chapitres)
     {

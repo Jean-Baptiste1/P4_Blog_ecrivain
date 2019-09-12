@@ -1,43 +1,38 @@
 ﻿<?php
 
 /**
- * Entity\Chapitre
+ * Entity\Chapitre, objet Chapitre
  */
 
 class Chapitre {
 
     /**
-     * @var int $id
+     * @var int $id id du chapitre
      */
     private $id;
 
     /**
-     * @var string $nom
+     * @var string $titre titre du chapitre
      */
     private $titre;
     
     /**
-     * @var string $contenu
+     * @var string $contenu contenu du chapitre
      */
 	private $contenu;
     
     /**
-     * @var string $image
+     * @var string $image image du chapitre
      */
     private $image;
     
     /**
-     * @var date $dateAjout
+     * @var date $dateAjout date d'ajout du chapitre
      */
 	private $dateAjout;
     
     /**
-     * @var date $dateModif
-     */
-	private $dateModif;
-
-    /**
-     * @var array $listCommentaire
+     * @var array $listCommentaire liste des commentaires du chapitre
      */
     private $listCommentaire = array();
 
@@ -62,6 +57,7 @@ class Chapitre {
 	}
 
     /**
+     * Permet de lire l'id du chapitre
      * @return int
      */
     public function getId(): int
@@ -70,6 +66,7 @@ class Chapitre {
     }
 
     /**
+     * Permet d'enregistrer l'id dans l'objet chapitre
      * @param int $id
      */
     public function setId(int $id): void
@@ -78,6 +75,7 @@ class Chapitre {
     }
 
     /**
+     * Permet de lire le titre
      * @return string
      */
     public function getTitre(): string
@@ -86,6 +84,7 @@ class Chapitre {
     }
 
     /**
+     * Permet d'enregistrer le titre dans l'objet chapitre
      * @param string $titre
      */
     public function setTitre(string $titre): void
@@ -94,6 +93,7 @@ class Chapitre {
     }
 
     /**
+     * Permet de lire le contenu du chapitre
      * @return string
      */
     public function getContenu(): string
@@ -102,6 +102,7 @@ class Chapitre {
     }
 
     /**
+     * Permet d'enregistrer le contenu dans l'objet chapitre
      * @param string $contenu
      */
     public function setContenu(string $contenu): void
@@ -110,6 +111,7 @@ class Chapitre {
     }
 
     /**
+     * Permet de lire l'image du chapitre
      * @return string
      */
     public function getImage(): string
@@ -118,6 +120,7 @@ class Chapitre {
     }
 
     /**
+     * Permet d'enregistrer l'image dans l'objet chapitre
      * @param string $image
      */
     public function setImage(string $image): void
@@ -126,6 +129,7 @@ class Chapitre {
     }
 
     /**
+     * Permet de lire la date d'ajout du chapitre
      * @return date
      */
     public function getDateAjout(): string
@@ -134,7 +138,8 @@ class Chapitre {
     }
 
     /**
-     * @param date $dateAjout
+     * Permet d'enregistrer la date d'ajout dans l'objet chapitre
+     * @param datetime $dateAjout
      */
     public function setDateAjout(DateTime $dateAjout): void
     {
@@ -142,6 +147,7 @@ class Chapitre {
     }
 
     /**
+     * Permet de lire la liste des comentaires
      * @return array
      */
     public function getListCommentaire(): ? array
@@ -150,7 +156,8 @@ class Chapitre {
     }
 
     /**
-     * @param object $listCommentaire
+     * Permet d'enregistrer les commentaires dans l'objet chapitre
+     * @param array $listCommentaire
      */
     public function setListCommentaire(array $listCommentaire): void
     {

@@ -1,38 +1,38 @@
 <?php
 
 /**
- * Entity\Commentaire
+ * Entity\Commentaire, objet Commentaire
  */
 
 class Commentaire {
 
     /**
-     * @var int $id
+     * @var int $id id du commentaire
      */
     private $id;
 
     /**
-     * @var string $pseudo
+     * @var string $pseudo pseudo du commentaire
      */
     private $pseudo;
     
     /**
-     * @var string $dateAjout
+     * @var string $dateAjout date d'ajout du commentaire
      */
 	private $dateAjout;
     
     /**
-     * @var string $contenu
+     * @var string $contenu contenu du commentaire
      */
     private $contenu;
 
     /**
-     * @var string $nomChapitre
+     * @var string $nomChapitre nom du chapitre du commentaire
      */
     private $nomChapitre;
 
     /**
-     * @var bool $signalement
+     * @var bool $signalement signalement du commentaire
      */
     private $signalement;
 
@@ -57,6 +57,7 @@ class Commentaire {
 	}
 
     /**
+     * Permet de lire l'id du commentaire
      * @return int
      */
     public function getId(): int
@@ -65,6 +66,7 @@ class Commentaire {
     }
 
     /**
+     * Permet d'enregistrer l'id du commentaire
      * @param int $id
      */
     public function setId(int $id): void
@@ -73,6 +75,7 @@ class Commentaire {
     }
 
     /**
+     * Permet de lire la date d'ajout d'un commentaire
      * @return string
      */
     public function getDateAjout(): string
@@ -81,6 +84,7 @@ class Commentaire {
     }
 
     /**
+     * Permet d'enregistrer la date d'ajout du commentaire
      * @param DateTime $dateAjout
      */
     public function setDateAjout(DateTime $dateAjout): void
@@ -89,6 +93,7 @@ class Commentaire {
     }
 
     /**
+     * Permet de lire le pseudo d'un commentaire
      * @return string
      */
     public function getPseudo(): string
@@ -97,6 +102,7 @@ class Commentaire {
     }
 
     /**
+     * Permet d'enregistrer le pseudo d'un commentaire
      * @param string $pseudo
      */
     public function setPseudo(string $pseudo): void
@@ -105,6 +111,7 @@ class Commentaire {
     }
 
     /**
+     * Permet de lire le contenu d'un commentaire
      * @return string
      */
     public function getContenu(): string
@@ -113,6 +120,7 @@ class Commentaire {
     }
 
     /**
+     * Permet d'enregistre le contenu d'un commentaire
      * @param string $contenu
      */
     public function setContenu(string $contenu): void
@@ -121,6 +129,7 @@ class Commentaire {
     }
 
     /**
+     * Permet de lire le nom du chapitre du commentaire
      * @return null
      */
     public function getNomChapitre()
@@ -129,6 +138,7 @@ class Commentaire {
     }
 
     /**
+     * Permet d'enregistrer le nom du chapitre du commentaire
      * @param null $nomChapitre
      */
     public function setNomChapitre($nomChapitre): void
@@ -137,6 +147,7 @@ class Commentaire {
     }
 
     /**
+     * Permet de lire le signalement d'un commentaire
      * @return bool
      */
     public function getSignalement(): bool
@@ -145,6 +156,7 @@ class Commentaire {
     }
 
     /**
+     * Permet d'enregistrer le signalement d'un commentaire
      * @param $signalement
      */
     public function setSignalement($signalement): void

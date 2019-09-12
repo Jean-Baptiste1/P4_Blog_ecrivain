@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class ChapitreManager
+ * Class ChapitreManager gère les requêtes en base de données
  */
 class ChapitreManager
 {
@@ -14,7 +14,8 @@ class ChapitreManager
     }
 
     /**
-     * @param Chapitre $chapitre
+     * Permet de créer un chapitre
+     * @param Chapitre $chapitre récupère un objet Chapitre
      */
     public function create(Chapitre $chapitre)
     {
@@ -42,9 +43,9 @@ class ChapitreManager
     }
 
     /**
-     * @param $id
+     * Permet de lire tous les chapitres ou un chapitre
+     * @param int $id récupère l'id du chapitre peut être NULL
      * @return mixed
-     * @throws Exception
      */
     public function read($id)
     {
@@ -132,7 +133,8 @@ class ChapitreManager
     }
 
     /**
-     * @param Chapitre $chapitre
+     * Met à jour un chapitre
+     * @param Chapitre $chapitre récupère un objet Chapitre
      */
     public function update(Chapitre $chapitre)
     {
@@ -157,7 +159,8 @@ class ChapitreManager
     }
 
     /**
-     * @param $id
+     * Supprime un chapitre
+     * @param int $id récupère l'id d'un chapitre
      */
     public function delete($id)
     {
